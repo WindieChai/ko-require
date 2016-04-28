@@ -10,15 +10,27 @@ define(["knockout"], function (ko) {
             menus: [
                 {
                     name: "KnockoutJS",
-                    path: "#ko"
+                    hash: "#ko",
+                    template: {
+                        name: "content-ko",
+                        path: "content.ko.template.html"
+                    }
                 },
                 {
                     name: "RequireJS",
-                    path: "#require"
+                    hash: "#require",
+                    template: {
+                        name: "content-require",
+                        path: "content.require.template.html"
+                    }
                 },
                 {
                     name: "ko-require",
-                    path: "#ko-require"
+                    hash: "#ko-require",
+                    template: {
+                        name: "content-ko-require",
+                        path: "content.ko-require.template.html"
+                    }
                 }
             ],
             current: ko.observable()
@@ -31,8 +43,9 @@ define(["knockout"], function (ko) {
 
             for (;index >= 0; index--) {
                 menu = self.page.menus[index];
-                if (menu.path === window.location.hash) {
+                if (menu.hash === window.location.hash) {
                     current = menu;
+                    break;
                 }
             }
 

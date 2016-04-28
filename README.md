@@ -80,8 +80,3 @@ requirejs.config({
     }
 });
 ```
-
-
-## to do
-
-If pass a `ko.observable` object to `components` or `templates` option, response the value changing.

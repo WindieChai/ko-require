@@ -7,9 +7,9 @@
 <!-- /ko -->
 
 <!-- ko with: page.current -->
-<h2>
-    Hello, <!-- ko text: page.current().name --><!-- /ko --> !
-</h2>
+    <!-- ko require:{ templates: [template.name + ":" + template.path] } -->
+        <!-- ko template: { name: template.name } --><!-- /ko -->
+    <!-- /ko -->
 <!-- /ko -->
 
 <!-- ko require:{ templates: ["footer-template:footer.template.html"] } -->

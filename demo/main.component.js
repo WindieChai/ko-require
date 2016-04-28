@@ -1,6 +1,6 @@
 define(["knockout", "../ko-require", "./main.viewmodel", "text!./main.template.html"], function (ko, koRequire, vm, html) {
     "use strict";
-    
+
     ko.components.register("main", {
         viewModel: {
             instance: vm
@@ -8,5 +8,5 @@ define(["knockout", "../ko-require", "./main.viewmodel", "text!./main.template.h
         template: html
     });
 
-    ko.applyBindings(document.body);
+    ko.applyBindings();
 });

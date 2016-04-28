@@ -29,7 +29,7 @@ define(["knockout", "require"], function (ko, require) {
         }
     }
 
-    function appendTemplate (name, html, element) {
+    function appendNamedTemplate (name, html, element) {
         var script;
 
         if (document.getElementById(name) === null) {
@@ -58,10 +58,6 @@ define(["knockout", "require"], function (ko, require) {
                 return template.path;
             }).concat(options.components);
 
-        if (modules.every(require.defined) === true) {
-            return false;
-        }
-
         require(modules, function () {
             var argName, index;
 
@@ -69,7 +65,7 @@ define(["knockout", "require"], function (ko, require) {
                 if (arguments.hasOwnProperty(argName)) {
                     index = parseInt(argName);
                     if (arguments.hasOwnProperty(argName) && index < templateCount) {
-                        appendTemplate(templates[index].name, arguments[argName], element);
+                        appendNamedTemplate(templates[index].name, arguments[argName], element);
                     }
                 }
             }
@@ -77,11 +73,9 @@ define(["knockout", "require"], function (ko, require) {
             showNodes(children);
             ko.applyBindingsToDescendants(bindingContext, element);
         });
-
-        return true;
     }
 
-    function init (element, valueAccessor, allBindings, viewModel, bindingContext) {
+    function update (element, valueAccessor, allBindings, viewModel, bindingContext) {
         var options = valueAccessor();
 
         if (options.components instanceof Array === false) {
@@ -92,13 +86,18 @@ define(["knockout", "require"], function (ko, require) {
             options.templates = [];
         }
 
+        load(options, element, bindingContext);
+    }
+
+    function init () {
         return {
-            controlsDescendantBindings: load(options, element, bindingContext)
+            controlsDescendantBindings: true
         };
     }
 
     ko.bindingHandlers.require = {
-        init: init
+        init: init,
+        update: update
     };
     ko.virtualElements.allowedBindings.require = true;
 });
