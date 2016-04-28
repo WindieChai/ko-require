@@ -1,0 +1,17 @@
+<!-- ko require:{ templates: ["header-template:header.template.html"] } -->
+    <!-- ko template: { name: "header-template", data: { title: page.title }} --><!-- /ko -->
+<!-- /ko -->
+
+<!-- ko require:{ components: ["nav.component"]} -->
+    <nav params="menus: page.menus"></nav>
+<!-- /ko -->
+
+<!-- ko with: page.current -->
+<h2>
+    Hello, <!-- ko text: page.current().name --><!-- /ko --> !
+</h2>
+<!-- /ko -->
+
+<!-- ko require:{ templates: ["footer-template:footer.template.html"] } -->
+    <!-- ko template: { name: "footer-template", data: { author: page.author }} --><!-- /ko -->
+<!-- /ko -->
