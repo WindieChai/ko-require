@@ -55,7 +55,7 @@ ko-require is a standard KnockoutJS custom binding implementaion. It means it ca
     <!-- ko with: page.content -->
         <!-- ko require:{ components: [ "content.component" ] } -->
             <!-- ko component: { name: "content",
-                                 params: { content: page.content } } --><!-- /ko -->
+                                 params: { content: $data } } --><!-- /ko -->
         <!-- /ko -->
     <!-- /ko -->
 
