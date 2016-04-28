@@ -5,7 +5,7 @@ define(["knockout"], function (ko) {
         var self = this;
 
         self.page = {
-            title: "ko-require-binding demo",
+            title: "ko-require demo",
             author: "Windie Chai",
             menus: [
                 {
