@@ -2,9 +2,7 @@ define(["knockout", "../ko-require", "./main.viewmodel", "text!./main.template.h
     "use strict";
 
     ko.components.register("main", {
-        viewModel: {
-            instance: vm
-        },
+        viewModel: vm,
         template: html
     });
 

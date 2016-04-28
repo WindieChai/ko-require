@@ -58,5 +58,5 @@ define(["knockout"], function (ko) {
         retrieveHash();
     }
 
-    return new ViewModel();
+    return ViewModel;
 });
