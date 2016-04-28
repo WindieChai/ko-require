@@ -9,7 +9,7 @@ It's very straightforward to use, just wrap the component reference inside a ko-
     <nav params="menus: page.menus"></nav>
 <!-- /ko -->
 ```
-The `components` option passed to ko-require is a string array. It will be loaded by ko-require using RequireJS. KnockoutJS will not bind any child elements of this ko-require virtual element until all the memebers specified in `components` were loaded. Other elements outside this ko-require virtual element will still be processed as usual.
+The `components` option passed to ko-require is a string array. It will be loaded by ko-require using RequireJS. KnockoutJS will not bind any child elements of this ko-require virtual element until all the members specified in `components` were loaded. Other elements outside this ko-require virtual element will still be processed as usual.
 
 The component still need to be registered at first. We recommand write the component as a self-registered AMD module. e.g, `nav.component.js`, the definition of component `nav`:
 ```javascript
