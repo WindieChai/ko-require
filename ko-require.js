@@ -1,13 +1,15 @@
 define(["knockout", "require"], function (ko, require) {
     "use strict";
 
+    var KO_REQUIRE_ORIGINAL_VISIBILITY_ATTIRIBUTE = "ko-require--original-visibility";
+
     function hideChildNodes (element) {
         var child = ko.virtualElements.firstChild(element),
             result = [];
 
         while (child) {
             if (child.nodeType === window.Node.ELEMENT_NODE) {
-                child.setAttribute("ko-require-visibility", child.style.visibility);
+                child.setAttribute(KO_REQUIRE_ORIGINAL_VISIBILITY_ATTIRIBUTE, child.style.visibility);
                 child.style.visibility = "hidden";
                 result.push(child);
             }
@@ -21,7 +23,8 @@ define(["knockout", "require"], function (ko, require) {
         var node = nodes.shift();
 
         while (node) {
-            node.style.visibility = node.getAttribute("ko-require-visibility");
+            node.style.visibility = node.getAttribute(KO_REQUIRE_ORIGINAL_VISIBILITY_ATTIRIBUTE);
+            node.removeAttribute(KO_REQUIRE_ORIGINAL_VISIBILITY_ATTIRIBUTE);
             node = nodes.shift();
         }
     }
